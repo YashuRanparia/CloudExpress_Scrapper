@@ -1,0 +1,8 @@
+Tag Name  Size                Font Family                   Color               height              width               margin              padding             
+H1        14.4px              Panton, sans-serif            rgb(245, 245, 245)  auto                auto                none                none                
+DIV       14.4px              Panton, sans-serif            rgb(245, 245, 245)  auto                auto                none                none                
+DIV       14.4px              Panton, sans-serif            rgb(245, 245, 245)  auto                auto                none                none                
+DIV       14.4px              Panton, sans-serif            rgb(245, 245, 245)  auto                auto                none                none                
+DIV       14.4px              Panton, sans-serif            rgb(245, 245, 245)  auto                auto                none                none                
+DIV       14.4px              Panton, sans-serif            rgb(245, 245, 245)  100%                100%                none                none                
+DIV       14.4px              Panton, sans-serif            rgb(245, 245, 245)  100%                100%                none                none                

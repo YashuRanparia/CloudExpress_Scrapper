@@ -1,0 +1,73 @@
+Tag Name  Size                Font Family                   Color               height              width               margin              padding             
+H1        64px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+H2        32px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+H4        16px                -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serifrgb(243, 243, 243)  auto                auto                none                none                
+H4        16px                -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serifrgb(243, 243, 243)  auto                auto                none                none                
+H4        16px                -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serifrgb(243, 243, 243)  auto                auto                none                none                
+H4        16px                -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serifrgb(243, 243, 243)  auto                auto                none                none                
+H4        16px                -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serifrgb(243, 243, 243)  auto                auto                none                none                
+H4        16px                -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serifrgb(243, 243, 243)  auto                auto                none                none                
+H4        16px                -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serifrgb(243, 243, 243)  auto                auto                none                none                
+H4        16px                -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serifrgb(243, 243, 243)  auto                auto                none                none                
+H4        16px                -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serifrgb(243, 243, 243)  auto                auto                none                none                
+P         36px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+P         36px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+P         36px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+P         36px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+P         36px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+P         36px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+P         36px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+P         36px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+P         36px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+P         16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+P         16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+P         16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+P         32px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
+DIV       16px                oculi-display, serif          rgb(243, 243, 243)  auto                auto                none                none                
