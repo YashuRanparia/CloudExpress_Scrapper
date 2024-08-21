@@ -7,10 +7,11 @@ from scrapper import extract_and_save_style_data
 
 
 async def article_reading(article_site_url):
+    csv_file = 'scrapped_data/data.csv'
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
-        page = await browser.new_page()
-        await page.goto(article_site_url, timeout= 2 * 60000)
+        page = await browser.new_page() 
+        await page.goto(article_site_url, timeout= 90000)
 
         firstdiv = await page.query_selector(".ct-container")
         seconddiv = await firstdiv.query_selector(".ct-content")
@@ -52,7 +53,7 @@ async def article_reading(article_site_url):
 
             # await asyncio.run(scrape_headings(post_href, f'articledata_{i}.txt'))
             try:
-                await scrape_headings(post_href, f'articledata_{i}.txt')
+                await scrape_headings(post_href, csv_file)
             except:
                 print('Skipping this article due to timeout!')
                 pass
