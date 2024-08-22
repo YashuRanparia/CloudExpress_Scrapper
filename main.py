@@ -1,13 +1,14 @@
 import asyncio
 
+import pandas as pd
 from playwright.async_api import async_playwright
 
-from sc2 import scrape_headings
+from sc2 import scrape_data
 from scrapper import extract_and_save_style_data
 
 
-async def article_reading(article_site_url):
-    csv_file = 'scrapped_data/data.csv'
+async def article_reading(article_site_url, csv_file):
+    
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
         page = await browser.new_page() 
@@ -53,7 +54,7 @@ async def article_reading(article_site_url):
 
             # await asyncio.run(scrape_headings(post_href, f'articledata_{i}.txt'))
             try:
-                await scrape_headings(post_href, csv_file)
+                await scrape_data(post_href, csv_file)
             except:
                 print('Skipping this article due to timeout!')
                 pass
@@ -61,17 +62,27 @@ async def article_reading(article_site_url):
 
     pass
 
+async def getTop6(file):
+    df = pd.read_csv(file)
+
+    unique_urls = df['url'].unique()
+
+    finaldf = pd.DataFrame(columns=df.columns)
+
+    for url in unique_urls:
+        toadd = df[df['url'] == url].sort_values('value',ascending = False)
+        toadd = toadd.head(6)
+        finaldf = pd.concat([finaldf, toadd], ignore_index=True)
+        pass
+
+    finaldf.to_csv('scrapped_data/final.csv',index=False)
+    pass
+
 if __name__ == "__main__":
     site_url = "https://tympanus.net/codrops/category/playground/"
-
-    # url = "https://www.example.com"
-    # element_selectors = ["h1", "p", "a"]
-    # output_file = "style_data.csv"
-    # extract_and_save_style_data(url, element_selectors, output_file)
-    # scrapped_data = extract_and_save_style_data(site_url,element_selectors,output_file)
-
-    # print(scrapped_data)
+    csv_file = 'scrapped_data/data.csv'
 
     # asyncio.run(scrape_headings('https://tympanus.net/Development/ImageTilesMenu/'))
-    asyncio.run(article_reading(site_url))
+    asyncio.run(article_reading(site_url, csv_file))
+    asyncio.run(getTop6(csv_file))
     pass

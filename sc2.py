@@ -4,6 +4,7 @@ import csv
 from playwright.async_api import async_playwright
 
 
+# columns = [url,tag_name,value,no_of_chars,size,color,height,width,font_family,font_weight,font_variant,line_height,letter_spacing,word_spacing,text_align,text_decoration,text_transform,margin,padding,background_color,background_image,background_position,background_repeat,background_size]
 async def writeData(file_name, headings_data):
     with open(file_name, 'a', newline='') as csvfile:
         csv_writer = csv.writer(csvfile)
@@ -12,7 +13,7 @@ async def writeData(file_name, headings_data):
             # font_family_str = ', '.join(row[3])
             csv_writer.writerow(row)
 
-async def scrape_headings(url, file_name):
+async def scrape_data(url, file_name):
     async with async_playwright() as p:
         browser = await p.chromium.launch(headless=True)
         page = await browser.new_page()
@@ -20,19 +21,43 @@ async def scrape_headings(url, file_name):
 
         scrapped_data = []
 
+
         async def get_element_styles(element):
             tag_name = await element.evaluate('(element) => element.tagName')
             size = await element.evaluate('(element) => window.getComputedStyle(element).fontSize')
             color = await element.evaluate('(element) => window.getComputedStyle(element).color')
-            font_family = await element.evaluate('(element) => window.getComputedStyle(element).fontFamily')
-            # font_weight = await element.evaluate('(element) => window.getComputedStyle(element).fontWeight')
             margin = await element.evaluate('(element) => element.style.margin ? element.style.margin : "none"')
             padding = await element.evaluate('(element) => element.style.padding ? element.style.padding : "none"')
             height = await element.evaluate('(element) => element.style.height ? element.style.height : "auto"')
             width = await element.evaluate('(element) => element.style.width ? element.style.width : "auto"')
 
+            #-----------------------------Font styles--------------------------------------------------------
+            font_family = await element.evaluate('(element) => window.getComputedStyle(element).fontFamily')
+            font_weight = await element.evaluate('(element) => window.getComputedStyle(element).fontWeight')
+            font_variant = await element.evaluate('(element) => window.getComputedStyle(element).fontVariant')
+            line_height = await element.evaluate('(element) => window.getComputedStyle(element).lineHeight')
+            letter_spacing = await element.evaluate('(element) => window.getComputedStyle(element).letterSpacing')
+            word_spacing = await element.evaluate('(element) => window.getComputedStyle(element).wordSpacing')
+            text_align = await element.evaluate('(element) => window.getComputedStyle(element).textAlign')
+            text_decoration = await element.evaluate('(element) => window.getComputedStyle(element).textDecoration')
+            text_transform = await element.evaluate('(element) => window.getComputedStyle(element).textTransform')
+
+            # -----------------------------Background related styles--------------------------------------------------------
+            background_color = await element.evaluate('(element) => window.getComputedStyle(element).backgroundColor')
+            background_image = await element.evaluate('(element) => window.getComputedStyle(element).backgroundImage')
+            background_position = await element.evaluate('(element) => window.getComputedStyle(element).backgroundPosition')
+            background_repeat = await element.evaluate('(element) => window.getComputedStyle(element).backgroundRepeat')
+            background_size = await element.evaluate('(element) => window.getComputedStyle(element).backgroundSize')
+
+            text_content = await element.evaluate('(element) => element.textContent')
+            no_of_chars = len(text_content)
+
+            siz = float(size.replace('px', ''))
+
+            value = siz * siz * no_of_chars
+
             print('Element scrapped!')
-            return (url, tag_name, size, font_family, color, height, width, margin, padding)
+            return (url,tag_name,value,no_of_chars,size,color,height,width,font_family,font_weight,font_variant,line_height,letter_spacing,word_spacing,text_align,text_decoration,text_transform,margin,padding,background_color,background_image,background_position,background_repeat,background_size)
 
         
 
@@ -45,10 +70,6 @@ async def scrape_headings(url, file_name):
             root = stack.pop(0)
             # elements = await root.query_selector_all('h1, h2 , h3, h4, h5, h6, div, p, a, button')
             elements = await root.query_selector_all('*')
-            # for e in elements:
-            #     tag = await e.evaluate('(element) => element.tagName')
-            #     if tag.lower() in selectors:
-            #         stack.append(e)
             for e in elements:
                 stack.append(e)
             elements = []
@@ -56,55 +77,16 @@ async def scrape_headings(url, file_name):
             data = await get_element_styles(root)
             scrapped_data.append(data)
             print('Element style extracted!',data)
-            print('Element style extracted!',len(stack))
+            print('Current length of stack: ',len(stack))
             pass
 
-        # Extract headings and their styles
-        # headings_data = []
-        # for i in range(1, 7):  # Heading levels from h1 to h6
-        #     headings = await page.query_selector_all(f'h{i}')
-        #     for heading in headings:
-        #         # Extract the tag name
-        #         tag_name = await heading.evaluate('(element) => element.tagName')
-        #         size = await heading.evaluate('(element) => window.getComputedStyle(element).fontSize')
-        #         color = await heading.evaluate('(element) => window.getComputedStyle(element).color')
-        #         font_family = await heading.evaluate('(element) => window.getComputedStyle(element).fontFamily')
-        #         margin = await heading.evaluate('(element) => element.style.margin ? element.style.margin : "none"')
-        #         padding = await heading.evaluate('(element) => element.style.padding ? element.style.padding : "none"')
-        #         height = await heading.evaluate('(element) => element.style.height ? element.style.height : "auto"')
-        #         width = await heading.evaluate('(element) => element.style.width ? element.style.width : "auto"')
-
-        #         headings_data.append((url,tag_name, size, font_family, color, height, width, margin, padding))
-
-        # for element in ['p', 'div']:
-        #     all_eles = await page.query_selector_all(element)
-
-        #     for e in all_eles:
-        #         tag_name = await e.evaluate('(element) => element.tagName')
-        #         size = await e.evaluate('(element) => window.getComputedStyle(element).fontSize')
-        #         color = await e.evaluate('(element) => window.getComputedStyle(element).color')
-        #         font_family = await e.evaluate('(element) => window.getComputedStyle(element).fontFamily')
-        #         margin = await e.evaluate('(element) => element.style.margin ? element.style.margin : "none"')
-        #         padding = await e.evaluate('(element) => element.style.padding ? element.style.padding : "none"')
-        #         height = await e.evaluate('(element) => element.style.height ? element.style.height : "auto"')
-        #         width = await e.evaluate('(element) => element.style.width ? element.style.width : "auto"')
-
-        #         headings_data.append((url,tag_name, size, font_family, color, height, width, margin, padding))
-
         await browser.close()
-
-        # csv_file = 'scrapped_data/data.csv'
         
         await writeData(file_name,scrapped_data)
-        # Write data to a text file
-        # with open(file_name, 'w') as file:
-        #     file.write(f"{'Tag Name':<10}{'Size':<20}{'Font Family':<30}{'Color':<20}{'height':<20}{'width':<20}{'margin':<20}{'padding':<20}\n")  # Column headers with fixed width
-        #     for tag_name, size, font_family, color, height, width, margin, padding in headings_data:
-        #         file.write(f"{tag_name:<10}{size:<20}{font_family:<30}{color:<20}{height:<20}{width:<20}{margin:<20}{padding:<20}\n")
 
-        print('Scraping completed! Check headings_data.txt for the results.')
+        print('Scraping completed! Check data.txt for the results.')
 
 # Run the scraping function
-# asyncio.run(scrape_headings('https://tympanus.net/Development/ImageTilesMenu/'))# Run the scraping function
-# asyncio.run(scrape_headings('https://tympanus.net/Development/PushGridItems/', 'scrapped_data/test.csv'))  #passed
-# asyncio.run(scrape_headings('https://tympanus.net/Development/IntroGridMotionTransition/', 'scrapped_data/test.csv'))
+# asyncio.run(scrape_data('https://tympanus.net/Development/ImageTilesMenu/'))# Run the scraping function
+# asyncio.run(scrape_data('https://tympanus.net/Development/PushGridItems/', 'scrapped_data/test.csv'))  #passed
+# asyncio.run(scrape_data('https://tympanus.net/Development/IntroGridMotionTransition/', 'scrapped_data/test.csv'))
