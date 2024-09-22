@@ -4,7 +4,7 @@ import csv
 from playwright.async_api import async_playwright
 
 
-# columns = [url,tag_name,value,no_of_chars,size,color,height,width,font_family,font_weight,font_variant,line_height,letter_spacing,word_spacing,text_align,text_decoration,text_transform,margin,padding,background_color,background_image,background_position,background_repeat,background_size]
+# columns = [url,tagName,value,no_of_chars,fontSize,color,height,width,fontFamily,fontWeight,fontVariant,lineHeight,letterSpacing,wordSpacing,textAlign,textDecoration,textTransform,margin,padding,backgroundColor,backgroundImage,backgroundPosition,backgroundRepeat,backgroundSize]
 async def writeData(file_name, headings_data):
     with open(file_name, 'a', newline='') as csvfile:
         csv_writer = csv.writer(csvfile)
@@ -23,8 +23,7 @@ async def scrape_data(url, file_name):
 
 
         async def get_element_styles(element):
-            tag_name = await element.evaluate('(element) => element.tagName')
-            size = await element.evaluate('(element) => window.getComputedStyle(element).fontSize')
+            tagName = await element.evaluate('(element) => element.tagName')
             color = await element.evaluate('(element) => window.getComputedStyle(element).color')
             margin = await element.evaluate('(element) => element.style.margin ? element.style.margin : "none"')
             padding = await element.evaluate('(element) => element.style.padding ? element.style.padding : "none"')
@@ -32,32 +31,33 @@ async def scrape_data(url, file_name):
             width = await element.evaluate('(element) => element.style.width ? element.style.width : "auto"')
 
             #-----------------------------Font styles--------------------------------------------------------
-            font_family = await element.evaluate('(element) => window.getComputedStyle(element).fontFamily')
-            font_weight = await element.evaluate('(element) => window.getComputedStyle(element).fontWeight')
-            font_variant = await element.evaluate('(element) => window.getComputedStyle(element).fontVariant')
-            line_height = await element.evaluate('(element) => window.getComputedStyle(element).lineHeight')
-            letter_spacing = await element.evaluate('(element) => window.getComputedStyle(element).letterSpacing')
-            word_spacing = await element.evaluate('(element) => window.getComputedStyle(element).wordSpacing')
-            text_align = await element.evaluate('(element) => window.getComputedStyle(element).textAlign')
-            text_decoration = await element.evaluate('(element) => window.getComputedStyle(element).textDecoration')
-            text_transform = await element.evaluate('(element) => window.getComputedStyle(element).textTransform')
+            fontSize = await element.evaluate('(element) => window.getComputedStyle(element).fontSize')
+            fontFamily = await element.evaluate('(element) => window.getComputedStyle(element).fontFamily')
+            fontWeight = await element.evaluate('(element) => window.getComputedStyle(element).fontWeight')
+            fontVariant = await element.evaluate('(element) => window.getComputedStyle(element).fontVariant')
+            lineHeight = await element.evaluate('(element) => window.getComputedStyle(element).lineHeight')
+            letterSpacing = await element.evaluate('(element) => window.getComputedStyle(element).letterSpacing')
+            wordSpacing = await element.evaluate('(element) => window.getComputedStyle(element).wordSpacing')
+            textAlign = await element.evaluate('(element) => window.getComputedStyle(element).textAlign')
+            textDecoration = await element.evaluate('(element) => window.getComputedStyle(element).textDecoration')
+            textTransform = await element.evaluate('(element) => window.getComputedStyle(element).textTransform')
 
             # -----------------------------Background related styles--------------------------------------------------------
-            background_color = await element.evaluate('(element) => window.getComputedStyle(element).backgroundColor')
-            background_image = await element.evaluate('(element) => window.getComputedStyle(element).backgroundImage')
-            background_position = await element.evaluate('(element) => window.getComputedStyle(element).backgroundPosition')
-            background_repeat = await element.evaluate('(element) => window.getComputedStyle(element).backgroundRepeat')
-            background_size = await element.evaluate('(element) => window.getComputedStyle(element).backgroundSize')
+            backgroundColor = await element.evaluate('(element) => window.getComputedStyle(element).backgroundColor')
+            backgroundImage = await element.evaluate('(element) => window.getComputedStyle(element).backgroundImage')
+            backgroundPosition = await element.evaluate('(element) => window.getComputedStyle(element).backgroundPosition')
+            backgroundRepeat = await element.evaluate('(element) => window.getComputedStyle(element).backgroundRepeat')
+            backgroundSize = await element.evaluate('(element) => window.getComputedStyle(element).backgroundSize')
 
             text_content = await element.evaluate('(element) => element.textContent')
             no_of_chars = len(text_content)
 
-            siz = float(size.replace('px', ''))
+            siz = float(fontSize.replace('px', ''))
 
             value = siz * siz * no_of_chars
 
             print('Element scrapped!')
-            return (url,tag_name,value,no_of_chars,size,color,height,width,font_family,font_weight,font_variant,line_height,letter_spacing,word_spacing,text_align,text_decoration,text_transform,margin,padding,background_color,background_image,background_position,background_repeat,background_size)
+            return (url,tagName,value,no_of_chars,fontSize,color,height,width,fontFamily,fontWeight,fontVariant,lineHeight,letterSpacing,wordSpacing,textAlign,textDecoration,textTransform,margin,padding,backgroundColor,backgroundImage,backgroundPosition,backgroundRepeat,backgroundSize)
 
         
 
